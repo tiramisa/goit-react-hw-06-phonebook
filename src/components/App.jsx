@@ -62,7 +62,7 @@ function App() {
       /> */}
       <h2 className={styles.formTitle}>Contact List</h2>
       {/* <Filter filter={filter} onChange={handleFilterChange} /> */}
-      <ContactsList />
+      {/* <ContactsList contacts={visibleContacts} onRemove={handleRemoveContact} /> */}
     </div>
   );
 }
