@@ -22,12 +22,17 @@ const ContactListItem = ({ id, name, phone }) => {
 
 const ContactsList = () => {
   const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(state => state.filter);
 
-  if (contacts.length === 0) return null;
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  if (filteredContacts.length === 0) return null;
 
   return (
     <ul>
-      {contacts.map(contact => (
+      {filteredContacts.map(contact => (
         <ContactListItem key={contact.id} {...contact} />
       ))}
     </ul>

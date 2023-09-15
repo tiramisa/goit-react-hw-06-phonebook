@@ -19,32 +19,6 @@ function App() {
   //     localStorage.setItem('contacts', JSON.stringify(contacts));
   //   }, [contacts]);
 
-  //   const handleAddContact = newContact => {
-  //     if (handleGetUniqueContacts(newContact.name)) {
-  //       setContacts(prevContacts => [...prevContacts, newContact]);
-  //     }
-  //   };
-
-  //   const handleGetUniqueContacts = name => {
-  //     const isExistContact = !!contacts.find(contact => contact.name === name);
-
-  //     if (isExistContact) {
-  //       alert('Контакт уже существует, убей его и создай новый:)');
-  //     }
-
-  //     return !isExistContact;
-  //   };
-
-  //   const handleFilterChange = value => {
-  //     setFilter(value);
-  //   };
-
-  //   const getVisibleContacts = () => {
-  //     return contacts.filter(contact =>
-  //       contact.name.toLowerCase().includes(filter.toLowerCase())
-  //     );
-  //   };
-
   //   const visibleContacts = getVisibleContacts();
 
   return (
@@ -52,7 +26,7 @@ function App() {
       <h2 className={styles.formTitle}>Form Contact</h2>
       <ContactForm />
       <h2 className={styles.formTitle}>Contact List</h2>
-      {/* <Filter filter={filter} onChange={handleFilterChange} /> */}
+      <Filter />
       <ContactsList />
     </div>
   );
