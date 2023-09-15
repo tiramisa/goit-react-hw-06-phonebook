@@ -21,7 +21,7 @@ ul {
   padding: 15px;
   text-align: center;
   background-image: linear-gradient(rgb(4, 68, 136), rgb(41, 105, 174), rgb(14, 25, 35));
-  border-radius: 10px;
+  border-radius: 4px;
   max-width: 500px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -30,16 +30,19 @@ ul {
   color: rgb(115, 134, 205);
 }
 
+.decorInput::placeholder {
+  color: #ccc;
+}
+
 .decorInput,
 .decorButton,
 .decorButtonKill {
   padding: 10px;
   border: none;
-  border-radius: 15px;
+  border-radius: 4px;
   background-color: azure;
   margin: 5px;
   text-align: center;
-  transition: background-color 0.3s ease;
 }
 
 .decorButton,
@@ -51,40 +54,20 @@ ul {
 
 .decorButton {
   background-color: rgb(153, 173, 197);
-  animation: blinkButtonBackground 1s infinite alternate;
 }
 
 .decorButtonKill {
-  background-color: rgb(244, 51, 8);
-  border-radius: 20px;
-  padding: 15px;
+  cursor: pointer;
+  background-color: rgb(155, 137, 163);
+  border-radius: 4px;
+  padding: 14px;
   margin: 5px;
   text-align: center;
   font-weight: 900;
-  animation: blinkButtonBackgroundKill 1s infinite alternate;
+
 }
 
-@keyframes blinkButtonBackground {
-  from {
-    background-color: rgb(153, 173, 197);
-  }
-
-  to {
-    background-color: rgb(219, 200, 193);
-  }
-}
-
-@keyframes blinkButtonBackgroundKill {
-  from {
-    background-color: rgb(237, 38, 3);
-  }
-
-  to {
-    background-color: rgb(53, 186, 93);
-  }
-}
-
-.decorItem {
-  color: rgb(216, 200, 200);
-  font-size: 24px;
+.decorItem a {
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
 }

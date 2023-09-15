@@ -25,12 +25,6 @@ function App() {
   //     }
   //   };
 
-  //   const handleRemoveContact = id => {
-  //     setContacts(prevContacts =>
-  //       prevContacts.filter(contact => contact.id !== id)
-  //     );
-  //   };
-
   //   const handleGetUniqueContacts = name => {
   //     const isExistContact = !!contacts.find(contact => contact.name === name);
 
@@ -56,13 +50,10 @@ function App() {
   return (
     <div className={styles.container}>
       <h2 className={styles.formTitle}>Form Contact</h2>
-      {/* <ContactForm
-        onAdd={handleAddContact}
-        getUniqueContacts={handleGetUniqueContacts}
-      /> */}
+      <ContactForm />
       <h2 className={styles.formTitle}>Contact List</h2>
       {/* <Filter filter={filter} onChange={handleFilterChange} /> */}
-      {/* <ContactsList contacts={visibleContacts} onRemove={handleRemoveContact} /> */}
+      <ContactsList />
     </div>
   );
 }

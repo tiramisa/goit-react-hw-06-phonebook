@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import styles from '../../myCss/index.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { addContact } from 'components/redux/contactSlice';
 
 const INITIAL_STATE = {
   phone: '',
   name: '',
 };
 
-const ContactForm = ({ onAdd, getUniqueContacts }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
   const [formData, setFormData] = useState(INITIAL_STATE);
 
   const handleChangeForm = ({ target }) => {
@@ -24,7 +28,8 @@ const ContactForm = ({ onAdd, getUniqueContacts }) => {
 
     const isValidatedForm = validateForm();
     if (isValidatedForm) {
-      onAdd({ id: nanoid(), name, phone });
+      const newContact = { id: nanoid(), name, phone };
+      dispatch(addContact(newContact));
       resetForm();
     }
   };
@@ -35,10 +40,20 @@ const ContactForm = ({ onAdd, getUniqueContacts }) => {
       alert('Please fill in all fields!');
       return false;
     }
-    return getUniqueContacts(name);
+    return handleGetUniqueContacts(name);
   };
 
   const resetForm = () => setFormData(INITIAL_STATE);
+
+  const handleGetUniqueContacts = name => {
+    const isExistContact = !!contacts.find(contact => contact.name === name);
+
+    if (isExistContact) {
+      alert('Contact already exists. Please create a new one.');
+    }
+
+    return !isExistContact;
+  };
 
   const { name, phone } = formData;
   return (
@@ -49,7 +64,7 @@ const ContactForm = ({ onAdd, getUniqueContacts }) => {
         name="name"
         placeholder="Enter name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        title="Name may contain only letters, apostrophe, dash, and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
         value={name}
         onChange={handleChangeForm}
@@ -66,7 +81,7 @@ const ContactForm = ({ onAdd, getUniqueContacts }) => {
         onChange={handleChangeForm}
       />
       <button className={styles.decorButton} type="submit">
-        Add Contact
+        Add
       </button>
     </form>
   );
