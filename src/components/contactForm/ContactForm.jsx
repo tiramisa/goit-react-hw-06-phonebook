@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import styles from '../../myCss/index.module.css';
-import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'components/redux/contactSlice';
 
 const INITIAL_STATE = {
@@ -24,6 +24,7 @@ const ContactForm = () => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
+
     const { name, phone } = formData;
 
     const isValidatedForm = validateForm();
@@ -50,9 +51,10 @@ const ContactForm = () => {
 
     if (isExistContact) {
       alert('Contact already exists. Please create a new one.');
+      return false;
     }
 
-    return !isExistContact;
+    return true;
   };
 
   const { name, phone } = formData;

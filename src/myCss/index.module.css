@@ -53,6 +53,7 @@ ul {
 }
 
 .decorButton {
+  cursor: pointer;
   background-color: rgb(153, 173, 197);
 }
 
